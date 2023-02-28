@@ -1,6 +1,6 @@
 baseURL = '/'
 languageCode = 'zh-cn'
-title = 'Hunter's blog'
+title = "Hunter's blog"
 theme='futu'
 enableRobotsTXT = true
 enableEmoji = true
