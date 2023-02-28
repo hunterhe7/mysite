@@ -1,0 +1,33 @@
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="author" content="{{ (partial "head/author.html" .).Get "name" }}" />
+<meta name="description" content="{{ partial "head/description.html" . }}" />
+<meta name="keywords" content="{{ delimit (partial "head/keywords.html" .) "," }}" />
+<meta name="robots" content="max-image-preview:large" />
+<link rel="canonical" href="{{ .Permalink }}" />
+{{ partial "head/icon.html" . }}
+{{ template "_internal/opengraph.html" . }}
+{{ template "_internal/twitter_cards.html" . }}
+{{ partial "schema_jsonld.html" . }}
+{{ range .AlternativeOutputFormats -}}
+  {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Title | safeHTML }}
+{{ end -}}
+{{ if .IsTranslated }}
+  {{- range .AllTranslations -}}
+    <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}" />
+  {{ end -}}
+{{ end }}
+{{ with .Site.Params.googleVerification }}
+  <meta name="google-site-verification" content="{{ . }}" />
+{{ end }}
+{{ $styles := slice }}
+{{ $styles = $styles | append (resources.Get "scss/main.scss" | resources.ToCSS) (resources.Get "scss/custom.scss" | resources.ToCSS) }}
+{{ $styles = $styles | append (resources.Get "css/syntax.css") (resources.Get "css/custom.css")}}
+{{ $styles = $styles | resources.Concat "styles.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}" />
+<style>
+iframe[sandbox]:not([sandbox=""]) {
+  display: none !important;
+}
+</style>

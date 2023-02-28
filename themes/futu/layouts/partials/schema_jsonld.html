@@ -1,0 +1,68 @@
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Blog",
+  "headline": {{ .Title }},
+  "url": {{ .Permalink }},
+  {{- with (partial "head/cover.html" .) }}
+  "image": {{ . }},
+  {{ end -}}
+  "description": {{ partial "head/description.html" . }},
+  "keywords": {{ partial "head/keywords.html" . }},
+  "author": {
+    "@type": "Person",
+    {{- with (partial "head/author.html" .).Get "url" }}
+    "url": {{ . }},
+    {{ end -}}
+    "name": {{ (partial "head/author.html" .).Get "name" }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "url": {{ $.Site.BaseURL }},
+    {{- with $.Site.Params.ampLogo }}
+    "logo": {{ . | absURL }},
+    {{ end -}}
+    "name": {{ $.Site.Title }}
+  },
+  "inLanguage": {{ .Site.LanguageCode }}
+}
+</script>
+{{ else if and .IsPage (ne .Params.layout "archives") }}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ .Title }},
+  {{- with (partial "head/cover.html" .) }}
+  "image": {{ . }},
+  {{ end -}}
+  "description": {{ partial "head/description.html" . }},
+  "keywords": {{ partial "head/keywords.html" . }},
+  "articleBody": {{ .Content | safeJS | htmlUnescape | plainify }},
+  {{- with .Section }}
+  "articleSection": {{ . }},
+  {{ end -}}
+  "mainEntityOfPage": {{ with  .OutputFormats.Get "html" -}}{{ .Permalink }}{{- end }},
+  "wordCount": {{ .WordCount }},
+  "author": {
+    "@type": "Person",
+    {{- with (partial "head/author.html" .).Get "url" }}
+    "url": {{ . }},
+    {{ end -}}
+    "name": {{ (partial "head/author.html" .).Get "name" }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "url": {{ $.Site.BaseURL }},
+    {{- with $.Site.Params.ampLogo }}
+    "logo": {{ . | absURL }},
+    {{ end -}}
+    "name": {{ $.Site.Title }}
+  },
+  "datePublished": {{ (partial "rfc3339.html" .PublishDate) | jsonify | safeJS }},
+  "dateModified": {{ (partial "rfc3339.html" .Lastmod) | jsonify | safeJS }},
+  "inLanguage": {{ .Site.LanguageCode }}
+}
+</script>
+{{ end }}

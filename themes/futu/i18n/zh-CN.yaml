@@ -1,0 +1,46 @@
+prevPage:
+  other: 上一页
+nextPage:
+  other: 下一页
+wordCount:
+  one: "约 {{ .Count }} 字"
+  other: "约 {{ .Count }} 字"
+readingTime:
+  one: "阅读 {{ .Count }} 分钟"
+  other: "阅读 {{ .Count }} 分钟"
+readMore:
+  other: "阅读更多"
+archive:
+  other: "归档"
+tags:
+  one: "标签"
+  other: "标签"
+categories:
+  one: "分类"
+  other: "分类"
+archiveCounter:
+  one: "共计 {{ .Count }} 篇"
+  other: "共计 {{ .Count }} 篇"
+zeroTaxonomyCounter:
+  other: "暂无{{ .Taxonomy }}"
+taxonomyCounter:
+  one: "共计 {{ .Count }} 个{{ .Taxonomy }}"
+  other: "共计 {{ .Count }} 个{{ .Taxonomy }}"
+powered:
+  other: "由 %s 强力驱动"
+theme:
+  other: "主题"
+caution:
+  other: "请注意！"
+cautionMessage:
+  other: "文中内容可能已过时，请谨慎使用。"
+TOC:
+  other: "文章目录"
+search:
+  other: "搜索"
+updated:
+  other: "更新"
+viewAll:
+  other: "查看全部"
+latest:
+  other: "最新%s"

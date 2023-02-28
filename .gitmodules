@@ -1,0 +1,3 @@
+[submodule "futu"]
+	path = futu
+	url = https://github.com/masakichi/futu

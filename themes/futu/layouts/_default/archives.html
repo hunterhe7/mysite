@@ -1,0 +1,4 @@
+{{- define "main" }}
+  {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+  {{ partial "list_page_content.html" (dict "title" .Title "pages" $pages) }}
+{{- end }}

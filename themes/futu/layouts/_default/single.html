@@ -1,0 +1,24 @@
+{{ define "main" -}}
+  <article>
+    <header>
+      <h1>{{ .Title }}</h1>
+      {{- partial "meta.html" . -}}
+    </header>
+    {{ if (.Params.toc | default (.Site.Params.toc | default false )) }}
+      {{ with .TableOfContents }}
+        {{ if ne . "<nav id=\"TableOfContents\"></nav>" }}
+          <details>
+            <summary>{{ i18n "TOC" }}</summary>
+            {{ . }}
+          </details>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    {{ .Content }}
+    {{ $currentOutputFormat := (partial "current_output_format.html" .) }}
+    {{ if eq $currentOutputFormat.Name "AMP" }}
+    {{ else }}
+      {{- partial "disqus.html" . -}}
+    {{ end }}
+  </article>
+{{- end }}

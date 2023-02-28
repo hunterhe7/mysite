@@ -1,0 +1,46 @@
+prevPage:
+  other: Prev
+nextPage:
+  other: Next
+wordCount:
+  one: "{{ .Count }} word"
+  other: "{{ .Count }} words"
+readingTime:
+  one: "{{ .Count }} min read"
+  other: "{{ .Count }} mins read"
+readMore:
+  other: "Read more..."
+archive:
+  other: "Archive"
+tags:
+  one: "Tag"
+  other: "Tags"
+categories:
+  one: "Category"
+  other: "Categories"
+archiveCounter:
+  one: "{{ .Count }} Item In Total"
+  other: "{{ .Count }} Items In Total"
+zeroTaxonomyCounter:
+  other: "No {{ .Taxonomy }}"
+taxonomyCounter:
+  one: "{{ .Count }} {{ .Taxonomy }} In Total"
+  other: "{{ .Count }} {{ .Taxonomy }} In Total"
+powered:
+  other: "Powered by %s"
+theme:
+  other: "Theme"
+caution:
+  other: "Caution!"
+cautionMessage:
+  other: "This article may contain outdated content."
+TOC:
+  other: "Waht's on this Page"
+search:
+  other: "Search"
+updated:
+  other: "Updated"
+viewAll:
+  other: "View all"
+latest:
+  other: "Latest %s"
