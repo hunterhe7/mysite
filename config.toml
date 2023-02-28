@@ -1,4 +1,7 @@
-baseURL = 'http://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = '/'
+languageCode = 'zh-cn'
+title = 'Hunter's blog'
 theme='futu'
+enableRobotsTXT = true
+enableEmoji = true
+enableGitInfo = true
